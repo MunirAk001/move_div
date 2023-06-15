@@ -7,16 +7,15 @@
         width: 900px;
         border: 2px solid red;
         margin: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         position: relative;
       }
-      .chalid {
+      #moveMe {
+        
         width: 100px;
         height: 100px;
         background-color: aqua;
-        margin: auto;
+
+
       }
       .btn1 {
         position: absolute;
@@ -47,17 +46,60 @@
   </head>
   <body>
     <div class="muno">
-      <div class="moveMe"></div>
+      <div id="moveMe"></div>
     </div>
-
-    <button class="btn">Top</button>
-    <button class="btn">lift</button>
-    <button class="btn">right</button>
-    <button class="btn">bottom</button>
+    <button class="btn" onclick="moveTop()">Top</button>
+    <button class="btn" onclick="moveLeft()">left</button>
+    <button class="btn" onclick="moveRight()">right</button>
+    <button class="btn" onclick="moveBottom()">bottom</button>
     <script>
-      const
+      // Global Scope 
+      const moveMe = document.getElementById("moveMe");
       function moveLeft(){
-
+        // Local Scope
+        const leftString = moveMe.style.marginLeft;
+        const leftArr = leftString.split("px");
+        const left = leftArr[0];
+     
+        if(left){
+          moveMe.style.marginLeft = (parseInt(left) - 20) + "px";
+        }else{
+          moveMe.style.marginLeft = "20px";
+        }
+      }
+      function moveRight(){
+        const leftString = moveMe.style.marginLeft;
+        const leftArr = leftString.split("px");
+        const left = leftArr[0];
+     
+        if(left){
+          moveMe.style.marginLeft = (parseInt(left) + 20) + "px";
+        }else{
+          moveMe.style.marginLeft = "20px";
+        }
+        
+      }
+      function moveTop(){
+        const topString = moveMe.style.marginTop;
+        const topArr = topString.split("px");
+        const top = topArr[0];
+       
+        if(top){
+          moveMe.style.marginTop = (parseInt(top) - 20) + "px";
+        }else{
+          moveMe.style.marginTop = "20px";
+        }
+      }
+      function moveBottom(){
+        const topString = moveMe.style.marginTop;
+        const topArr = topString.split("px");
+        const top = topArr[0];
+       
+        if(top){
+          moveMe.style.marginTop = (parseInt(top) + 20) + "px";
+        }else{
+          moveMe.style.marginTop = "20px";
+        }
       }
     </script>
   </body>

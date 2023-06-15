@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .muno {
+        height: 550px;
+        width: 900px;
+        border: 2px solid red;
+        margin: auto;
+        position: relative;
+      }
+      #moveMe {
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+
+
+      }
+      .btn1 {
+        position: absolute;
+        top: 0;
+      }
+      .btn1 {
+        position: absolute;
+        top: 0;
+      }
+      .btn2 {
+        position: absolute;
+        left: 0;
+      }
+      .btn2 {
+        position: absolute;
+        right: 0;
+      }
+      .btn2 {
+        position: absolute;
+        bottom: 0;
+      }
+      button {
+        width: 60px;
+        height: 30px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="muno">
+      <div id="moveMe"></div>
+    </div>
+    <button class="btn" onclick="move('t')">Top</button>
+    <button class="btn" onclick="move('l')">left</button>
+    <button class="btn" onclick="move('r')">right</button>
+    <button class="btn" onclick="move('b')">bottom</button>
+    <script>
+      // Global Scope 
+      const moveMe = document.getElementById("moveMe");
+
+      function move(direction){
+        const directions = {
+            'r': 'marginLeft',
+            'l': 'marginLeft',
+            't': 'marginTop',
+            'b': 'marginTop'
+        };
+        let propertyString = moveMe.style[directions[direction]];
+        const propertyArr = propertyString.split("px");
+        const property = propertyArr[0];
+        if(property){
+            if(["r","b"].includes(direction)){
+                moveMe.style[directions[direction]] = (parseInt(property) + 20) + "px"; 
+                return;
+            }
+            moveMe.style[directions[direction]] = (parseInt(property) - 20) + "px"; 
+            return;
+        }
+        moveMe.style[directions[direction]] = "20px";   
+
+      }
+    </script>
+  </body>
+</html>
